@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts</h1>
+<%= link_to new_post_path do %>
+  <i class="fa fa-music" aria-hidden="true"></i> New Post
+<%end%>
+<div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="well">
+        <h3><%= post.author %></h3>
+        <p><%= post.post_entry %></p>
+       <p><%= image_tag post.avatar.url(:medium) %></p>
+        <p><%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>  </p>
+      
+    
+</div>
+</div>
+<% end %>
+</div>
