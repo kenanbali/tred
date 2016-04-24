@@ -1,15 +1,28 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+before_filter :authenticate_user!
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+        
   end
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_to posts_path
+  end
+  def downvote
+  @post = Post.find(params[:id])
+  @post.downvote_by current_user
+  redirect_to posts_path
+end
+ 
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+
   end
 
   # GET /posts/new

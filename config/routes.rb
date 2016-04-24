@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  resources :posts
-  root 'index#About'
+  devise_for :users
+  resources :posts do 
+
+   member do
+    get "like", to: "posts#upvote"
+    get "dislike", to: "posts#downvote"
+  end 
+end 
+
+
+    root 'index#About'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -56,4 +66,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
