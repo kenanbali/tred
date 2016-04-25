@@ -11,11 +11,24 @@
         <h3><%= post.author %></h3>
         <p><%= post.post_entry %></p>
        <p><%= image_tag post.avatar.url(:medium) %></p>
-        <p><%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>  </p>
-      <%= link_to "upvote", like_post_path(post)%>
-   <%= link_to "downvote" , dislike_post_path(post) %>
-<%= post.score %>
+
+      <div class="dropdown">
+        <button class="dropbtn">Options</button>
+        <div class="dropdown-content">
+          <a> <%= link_to 'Show', post%></a>
+          <a> <%= link_to 'Edit', edit_post_path(post)%> </a>
+          <a>  <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        </div>
+      </div>
+
+
+      <%= link_to "", like_post_path(post), class:"glyphicon glyphicon-thumbs-up like"%>
+   <%= link_to "" , dislike_post_path(post), class:"glyphicon glyphicon-thumbs-down unlike" %>
+
+
+      <div class="score"> <%= post.score %> </div>
+
+
 </div>
 </div>
 <% end %>
